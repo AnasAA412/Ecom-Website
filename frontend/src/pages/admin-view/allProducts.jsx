@@ -20,7 +20,7 @@ import {
 } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteaProduct, fetchAllProduct } from "@/store/admin/product-slice";
-
+import ReadMoreArea from "@foxeian/react-read-more";
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "./mainform";
 
@@ -148,9 +148,18 @@ const AllProducts = () => {
                             color="blue-gray"
                             className="font-normal opacity-70 "
                           >
-                            {products?.description.length <= 40
-                              ? products?.description
-                              : products?.description.substr(0, 40) + "..."}
+                            <ReadMoreArea
+                              lettersLimit={50}
+                              collapseLabel="Read less"
+                              expandLabel="Read more"
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                              className="flex flex-col"
+                            >
+                              {products?.description}
+                            </ReadMoreArea>
                           </Typography>
                         </div>
                       </div>

@@ -122,3 +122,71 @@ export const addProductFormElements = [
     placeholder: "Enter total stock",
   },
 ];
+
+export const shoppingViewHeaderMenuItems = [
+  {
+    id: "home",
+    label: "Home",
+    path: "/",
+  },
+  {
+    id: "men",
+    label: "Men",
+    path: "/listing",
+  },
+  {
+    id: "women",
+    label: "Women",
+    path: "/listing",
+  },
+  {
+    id: "kids",
+    label: "Kids",
+    path: "/listing",
+  },
+  {
+    id: "accessories",
+    label: "Accessories",
+    path: "/listing",
+  },
+];
+
+export const filterOptions = {
+  category: [
+    {
+      id: "men",
+      label: "Men",
+    },
+    {
+      id: "men",
+      label: "Men",
+    },
+    {
+      id: "women",
+      label: "Women",
+    },
+    {
+      id: "kids",
+      label: "Kids",
+    },
+    {
+      id: "accessories",
+      label: "Accessories",
+    },
+  ],
+
+  brands: [
+    { id: "nike", label: "Nike" },
+    { id: "adidas", label: "Adidas" },
+    { id: "puma", label: "Puma" },
+    { id: "levi's", label: "Levi's" },
+    { id: "zara", label: "Zara" },
+  ],
+};
+
+export const sortOptions = [
+  { id: "price-lowtohigh", label: "Price: Low to high" },
+  { id: "price-hightolow", label: "Price: High to Low" },
+  { id: "title-atoz", label: "Title: A to Z" },
+  { id: "title-ztoa", label: "Tilte: Z to A" },
+];

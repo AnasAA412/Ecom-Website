@@ -1,7 +1,7 @@
 import React from "react";
 
 const ShoppingHome = () => {
-  return <div>home</div>;
+  return <div>home fghjkfyui</div>;
 };
 
 export default ShoppingHome;
