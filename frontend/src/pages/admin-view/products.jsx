@@ -7,8 +7,9 @@ import ProdutImageUpload from "@/components/admin-view/image-upload";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addNewProduct,
-  editaProduct,
-  fetchAllProduct,
+  editProduct,
+  fetchAllProducts,
+  deleteProduct,
 } from "@/store/admin/product-slice";
 import { useToast } from "@/hooks/use-toast";
 import { useGlobalState } from "./mainform";
@@ -39,7 +40,7 @@ const AdminProducts = () => {
     event.preventDefault();
 
     currentEditedId !== null
-      ? dispatch(editaProduct({ id: currentEditedId, formData })).then(
+      ? dispatch(editProduct({ id: currentEditedId, formData })).then(
           (data) => {
             console.log(data, "edit");
 
@@ -61,7 +62,7 @@ const AdminProducts = () => {
         ).then((data) => {
           console.log(data);
           if (data?.payload?.success) {
-            dispatch(fetchAllProduct());
+            dispatch(fetchAllProducts());
             setImageFile(null);
             setFormData(initialFormData);
             toast({
@@ -78,7 +79,7 @@ const AdminProducts = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchAllProduct());
+    dispatch(fetchAllProducts());
   }, [dispatch]);
   console.log(productList, uploadedImageUrl, "formData");
   console.log(formData);

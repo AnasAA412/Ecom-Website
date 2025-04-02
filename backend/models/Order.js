@@ -2,17 +2,16 @@ const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema({
   userId: String,
+  cartId: String,
   cartItems: [
     {
       productId: String,
       title: String,
       image: String,
       price: String,
-      salePrice: String,
       quantity: Number,
     },
   ],
-
   addressInfo: {
     addressId: String,
     address: String,
@@ -31,4 +30,4 @@ const OrderSchema = new mongoose.Schema({
   payerId: String,
 });
 
-module.export = mongoose.model("Order", OrderSchema);
+module.exports = mongoose.model("Order", OrderSchema);

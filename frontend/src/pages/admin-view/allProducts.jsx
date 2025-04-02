@@ -19,7 +19,7 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteaProduct, fetchAllProduct } from "@/store/admin/product-slice";
+import { deleteProduct, fetchAllProducts } from "@/store/admin/product-slice";
 import ReadMoreArea from "@foxeian/react-read-more";
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "./mainform";
@@ -50,16 +50,16 @@ const AllProducts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllProduct());
+    dispatch(fetchAllProducts());
   }, []);
 
   console.log(productList);
 
   function handleDelete(getCurrentProductId) {
     console.log(getCurrentProductId);
-    dispatch(deleteaProduct(getCurrentProductId)).then((data) => {
+    dispatch(deleteProduct(getCurrentProductId)).then((data) => {
       if (data?.payload?.success) {
-        dispatch(fetchAllProduct());
+        dispatch(fetchAllProducts());
       }
     });
   }

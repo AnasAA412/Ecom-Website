@@ -2,29 +2,29 @@ const Address = require("../../models/Address");
 
 const addAddress = async (req, res) => {
   try {
-    const { userId, address, city, phone, pincode, notes } = req.body;
+    const { userId, address, city, pincode, phone, notes } = req.body;
 
-    if (!userId || !address || !city || !phone || !pincode || !notes) {
+    if (!userId || !address || !city || !pincode || !phone || !notes) {
       return res.status(400).json({
         success: false,
-        message: "Invalid data provided",
+        message: "Invalid data provided!",
       });
     }
 
-    const newLyCreatedAddress = new Address({
+    const newlyCreatedAddress = new Address({
       userId,
       address,
       city,
-      phone,
-      notes,
       pincode,
+      notes,
+      phone,
     });
 
-    await newLyCreatedAddress.save();
+    await newlyCreatedAddress.save();
 
     res.status(201).json({
       success: true,
-      data: newLyCreatedAddress,
+      data: newlyCreatedAddress,
     });
   } catch (e) {
     console.log(e);
@@ -38,15 +38,14 @@ const addAddress = async (req, res) => {
 const fetchAllAddress = async (req, res) => {
   try {
     const { userId } = req.params;
-
     if (!userId) {
       return res.status(400).json({
         success: false,
-        message: "User Id is required!",
+        message: "User id is required!",
       });
     }
 
-    const addressList = await Address.findOne({ userId });
+    const addressList = await Address.find({ userId });
 
     res.status(200).json({
       success: true,
@@ -69,11 +68,9 @@ const editAddress = async (req, res) => {
     if (!userId || !addressId) {
       return res.status(400).json({
         success: false,
-        message: "User Id and addressId is required!",
+        message: "User and address id is required!",
       });
     }
-
-    //these will automatically find and updated address with latest data
 
     const address = await Address.findOneAndUpdate(
       {
@@ -87,7 +84,7 @@ const editAddress = async (req, res) => {
     if (!address) {
       return res.status(404).json({
         success: false,
-        message: "Address not found!",
+        message: "Address not found",
       });
     }
 
@@ -110,25 +107,22 @@ const deleteAddress = async (req, res) => {
     if (!userId || !addressId) {
       return res.status(400).json({
         success: false,
-        message: "User Id and addressId is required!",
+        message: "User and address id is required!",
       });
     }
 
-    const address = await Address.findOneAndDelete({
-      _id: addressId,
-      userId,
-    });
+    const address = await Address.findOneAndDelete({ _id: addressId, userId });
 
     if (!address) {
       return res.status(404).json({
         success: false,
-        message: "Address not found!",
+        message: "Address not found",
       });
     }
 
     res.status(200).json({
       success: true,
-      message: "Address deleted Successfully",
+      message: "Address deleted successfully",
     });
   } catch (e) {
     console.log(e);
@@ -139,4 +133,4 @@ const deleteAddress = async (req, res) => {
   }
 };
 
-module.exports = { addAddress, fetchAllAddress, editAddress, deleteAddress };
+module.exports = { addAddress, editAddress, fetchAllAddress, deleteAddress };

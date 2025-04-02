@@ -12,3 +12,4 @@ const ProductReviewSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("ProductReview", ProductReviewSchema);
+
