@@ -49,6 +49,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.status(200).json("welcome to Ecom wala");
+});
+
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
