@@ -1,10 +1,10 @@
+import { axiosInstance } from "@/config/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
-const registerURL = "http://localhost:5005/api/auth/register";
-const loginURL = "http://localhost:5005/api/auth/login";
-const checkAuthURL = "http://localhost:5005/api/auth/check-auth";
-const logoutURL = "http://localhost:5005/api/auth/logout";
+const registerURL = "/api/auth/register";
+const loginURL = "/api/auth/login";
+const checkAuthURL = "/api/auth/check-auth";
+const logoutURL = "/api/auth/logout";
 
 const initialState = {
   isAuthenticated: false,
@@ -15,7 +15,7 @@ const initialState = {
 export const registerUser = createAsyncThunk(
   "/auth/register",
   async (formData) => {
-    const response = await axios.post(
+    const response = await axiosInstance.post(
       registerURL,
       formData,
 
@@ -28,7 +28,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk("/auth/login", async (formData) => {
-  const response = await axios.post(
+  const response = await axiosInstance.post(
     loginURL,
     formData,
 
@@ -40,7 +40,7 @@ export const loginUser = createAsyncThunk("/auth/login", async (formData) => {
 });
 
 export const logoutUser = createAsyncThunk("/auth/logout", async () => {
-  const response = await axios.post(
+  const response = await axiosInstance.post(
     logoutURL,
     {},
 
@@ -52,7 +52,7 @@ export const logoutUser = createAsyncThunk("/auth/logout", async () => {
 });
 
 export const checkAuth = createAsyncThunk("/auth/checkAuth", async () => {
-  const response = await axios.get(
+  const response = await axiosInstance.get(
     checkAuthURL,
 
     {

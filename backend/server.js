@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
+
 const cors = require("cors");
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
@@ -19,10 +21,12 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 //create a database connection -> u can also
 //create a separate file for this and then import /use that file here
+
+const MONGO_URI = process.env.MONGO_URI;
+console.log(MONGO_URI, "mongo_uri");
+
 mongoose
-  .connect(
-    "mongodb+srv://anchuathikandathil:anchuecomweb@cluster0.leuy0.mongodb.net/"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((error) => console.log(error));
 
