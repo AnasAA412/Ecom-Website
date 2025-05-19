@@ -57,8 +57,10 @@ const getFilteredProducts = async (req, res) => {
 
 const getProductDetails = async (req, res) => {
   try {
+    console.log(req.params);
     const { id } = req.params;
     const product = await Product.findById(id);
+    console.log(product);
 
     if (!product)
       return res.status(404).json({
@@ -71,7 +73,7 @@ const getProductDetails = async (req, res) => {
       data: product,
     });
   } catch (e) {
-    console.log(error);
+    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured",

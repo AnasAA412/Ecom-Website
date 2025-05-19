@@ -5,7 +5,7 @@ const User = require("../../models/User");
 
 const registerUser = async (req, res) => {
   const { userName, email, password } = req.body;
-
+  console.log(req.body)
   try {
     const checkUser = await User.findOne({ email });
     if (checkUser)
@@ -35,6 +35,7 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
+
 
   try {
     const checkUser = await User.findOne({ email });

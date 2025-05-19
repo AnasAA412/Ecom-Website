@@ -163,20 +163,20 @@ function ShoppingHome() {
         </Button>
       </div>
 
-      <section className="py-10 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif text-center mb-8">
+      <section className="py-7 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-2xl font-serif text-center mb-1">
             Shop by Brand
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {brandsWithIcon.map((brandItem) => (
               <Card
                 onClick={() => handleNavigateToListingPage(brandItem, "brand")}
-                className="cursor-pointer hover:shadow-lg transition-shadow"
+                className="cursor-pointer hover:shadow-lg transition-shadow border-none"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
-                  <brandItem.icon className="w-10 h-10 mb-4 text-primary" />
-                  <span className="font-bold">{brandItem.label}</span>
+                  <brandItem.icon className="w-8 h-8 mb-2 text-primary" />
+                  <span className="">{brandItem.label}</span>
                 </CardContent>
               </Card>
             ))}
@@ -184,12 +184,12 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-10 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif text-center mb-8">
+          <h2 className="text-2xl font-serif text-center mb-2">
             Feature Products
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+          <div className="p-20 grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-4  gap-y-4 gap-x-1 ">
             {productList && productList.length > 0
               ? productList.map((productItem) => (
                   <ShoppingProductTile
@@ -205,10 +205,10 @@ function ShoppingHome() {
 
       <section className="py-10 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif text-center mb-8">
+          <h2 className="text-2xl font-serif text-center mb-2">
             Shop by category
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="p-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {categoriesWithIcon.map((categoryItem) => (
               <Card
                 onClick={() =>
@@ -217,8 +217,8 @@ function ShoppingHome() {
                 className="cursor-pointer hover:shadow-lg transition-shadow"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
-                  <categoryItem.icon className="w-10 h-10 mb-4 text-primary" />
-                  <span className="font-bold">{categoryItem.label}</span>
+                  <categoryItem.icon className="w-10 h-10 mb-2 text-primary" />
+                  <span>{categoryItem.label}</span>
                 </CardContent>
               </Card>
             ))}
@@ -226,12 +226,12 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-12 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-serif text-center mb-8">
             Feature Products
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+          <div className="p-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-1">
             {productList && productList.length > 0
               ? productList.map((productItem) => (
                   <ShoppingProductTile
@@ -244,11 +244,11 @@ function ShoppingHome() {
           </div>
         </div>
       </section>
-      <ProductDetailsDialog
+      {/* <ProductDetailsDialog
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
-      />
+      /> */}
     </div>
   );
 }

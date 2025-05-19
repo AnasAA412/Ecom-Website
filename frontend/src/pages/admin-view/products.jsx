@@ -45,7 +45,7 @@ const AdminProducts = () => {
             console.log(data, "edit");
 
             if (data?.payload?.success) {
-              dispatch(fetchAllProduct());
+              dispatch(fetchAllProducts());
               setFormData(initialFormData);
               setCurrentEditedId(null);
               toast({

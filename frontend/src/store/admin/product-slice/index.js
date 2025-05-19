@@ -1,5 +1,5 @@
-import { axiosInstance } from "@/config/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { axiosInstance } from "@/config/axios";
 
 const initialState = {
   isLoading: false,

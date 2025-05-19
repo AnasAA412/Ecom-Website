@@ -2,16 +2,18 @@ import { Card, CardContent, CardFooter } from "../ui/card";
 import { Button } from "../ui/button";
 import { brandOptionsMap, categoryOptionsMap } from "@/config";
 import { Badge } from "../ui/badge";
+import { useNavigate } from "react-router-dom";
 
 function ShoppingProductTile({
   product,
   handleGetProductDetails,
   handleAddtoCart,
 }) {
+  const navigate = useNavigate();
   return (
-    <Card className="w-full max-w-sm mx-">
-      <div onClick={() => handleGetProductDetails(product?._id)}>
-        <div className="relative">
+    <Card className="w-70 max-w-sm mx-8 border-none ">
+      <div onClick={() => navigate(`/shop/product/${product?._id}`)}>
+        <div className="relative ">
           <img
             src={product?.image}
             alt={product?.title}
@@ -31,46 +33,51 @@ function ShoppingProductTile({
             </Badge>
           ) : null}
         </div>
-        <CardContent className="p-4">
-          <h2 className="text-xl font-medium mb-2">{product?.title}</h2>
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-[16px] text-muted-foreground">
+        <CardContent className="p-4 ">
+          <h2 className="text-balance font-medium mb-2 ">{product?.title}</h2>
+          <div className="flex justify-between items-center mb-2 ">
+            <span className="text-balance text-muted-foreground">
               {categoryOptionsMap[product?.category]}
             </span>
-            <span className="text-[16px] text-muted-foreground">
+            <span className="text-balance text-muted-foreground">
               {brandOptionsMap[product?.brand]}
             </span>
           </div>
-          <div className="flex justify-between items-center mb-2">
-            <span
-              className={`${
-                product?.salePrice > 0 ? "line-through" : ""
-              } text-lg font-semibold text-primary`}
-            >
-              ${product?.price}
-            </span>
-            {product?.salePrice > 0 ? (
-              <span className="text-lg font-semibold text-primary">
-                ${product?.salePrice}
+          <div className="flex justify-between items-center mb-2 ">
+            <div>
+              <span
+                className={`${
+                  product?.salePrice > 0 ? "line-through" : ""
+                } text-balance font-semibold text-primary`}
+              >
+                {product?.price}
               </span>
-            ) : null}
+              {product?.salePrice > 0 ? (
+                <span className="text-lg font-semibold text-primary">
+                  ${product?.salePrice}
+                </span>
+              ) : null}
+            </div>
+
+            <div>
+              {product?.totalStock === 0 ? (
+                <Button className="w-full opacity-60 cursor-not-allowed">
+                  Out Of Stock
+                </Button>
+              ) : (
+                <Button
+                  onClick={() =>
+                    handleAddtoCart(product?._id, product?.totalStock)
+                  }
+                  className=""
+                >
+                  Add cart
+                </Button>
+              )}
+            </div>
           </div>
         </CardContent>
       </div>
-      <CardFooter>
-        {product?.totalStock === 0 ? (
-          <Button className="w-full opacity-60 cursor-not-allowed">
-            Out Of Stock
-          </Button>
-        ) : (
-          <Button
-            onClick={() => handleAddtoCart(product?._id, product?.totalStock)}
-            className="w-full"
-          >
-            Add to cart
-          </Button>
-        )}
-      </CardFooter>
     </Card>
   );
 }

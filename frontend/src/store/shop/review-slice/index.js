@@ -11,14 +11,14 @@ export const addReview = createAsyncThunk(
   async (formdata) => {
     const response = await axiosInstance.post(`/api/shop/review/add`, formdata);
 
-    return response.data;
+    return response?.data;
   }
 );
 
 export const getReviews = createAsyncThunk("/order/getReviews", async (id) => {
   const response = await axiosInstance.get(`/api/shop/review/${id}`);
 
-  return response.data;
+  return response?.data;
 });
 
 const reviewSlice = createSlice({

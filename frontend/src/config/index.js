@@ -62,7 +62,7 @@ export const addProductFormElements = [
       { id: "women", label: "Women" },
       { id: "kids", label: "Kids" },
       { id: "accessories", label: "Accessories" },
-      { id: "footwear", label: "Footwear" },
+      { id: "phone", label: "Phone" },
     ],
   },
   {
@@ -75,7 +75,7 @@ export const addProductFormElements = [
       { id: "puma", label: "Puma" },
       { id: "levi", label: "Levi's" },
       { id: "zara", label: "Zara" },
-      { id: "h&m", label: "H&M" },
+      { id: "iphone", label: "Iphone" },
     ],
   },
   {
@@ -149,7 +149,7 @@ export const categoryOptionsMap = {
   women: "Women",
   kids: "Kids",
   accessories: "Accessories",
-  footwear: "Footwear",
+  phone: "Phone",
 };
 
 export const brandOptionsMap = {
@@ -158,7 +158,7 @@ export const brandOptionsMap = {
   puma: "Puma",
   levi: "Levi",
   zara: "Zara",
-  "h&m": "H&M",
+  iphone: "Iphone",
 };
 
 export const filterOptions = {
@@ -167,7 +167,7 @@ export const filterOptions = {
     { id: "women", label: "Women" },
     { id: "kids", label: "Kids" },
     { id: "accessories", label: "Accessories" },
-    { id: "footwear", label: "Footwear" },
+    { id: "phone", label: "Phone" },
   ],
   brand: [
     { id: "nike", label: "Nike" },
@@ -175,7 +175,7 @@ export const filterOptions = {
     { id: "puma", label: "Puma" },
     { id: "levi", label: "Levi's" },
     { id: "zara", label: "Zara" },
-    { id: "h&m", label: "H&M" },
+    { id: "iphone", label: "Iphone" },
   ],
 };
 
